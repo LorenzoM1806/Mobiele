@@ -12,6 +12,11 @@ import {AuthService} from './auth.service';
 import {observableToBeFn} from 'rxjs/internal/testing/TestScheduler';
 import {Observable} from 'rxjs';
 import {Bier} from '../../types/bier';
+import {Cava} from '../../types/Cava';
+import {Frisdrank} from "../../types/Frisdrank";
+import {Fruitsap} from "../../types/Fruitsap";
+import {Water} from "../../types/Water";
+import {Wijn} from "../../types/Wijn";
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +36,51 @@ export class DatabaseService {
   retrieveBieren(types: string): Observable<Bier[]> {
     return collectionData<Bier>(
       query<Bier>(
+        this.#getCollectionRef(types)
+      ),
+      {idField: 'id'}
+    );
+  }
+
+  retrieveCava(types: string): Observable<Cava[]> {
+    return collectionData<Cava>(
+      query<Cava>(
+        this.#getCollectionRef(types)
+      ),
+      {idField: 'id'}
+    );
+  }
+
+  retrieveFrisdrank(types: string): Observable<Frisdrank[]> {
+    return collectionData<Frisdrank>(
+      query<Frisdrank>(
+        this.#getCollectionRef(types)
+      ),
+      {idField: 'id'}
+    );
+  }
+
+  retrieveFruitsappen(types: string): Observable<Fruitsap[]> {
+    return collectionData<Fruitsap>(
+      query<Fruitsap>(
+        this.#getCollectionRef(types)
+      ),
+      {idField: 'id'}
+    );
+  }
+
+  retrieveWater(types: string): Observable<Water[]> {
+    return collectionData<Water>(
+      query<Water>(
+        this.#getCollectionRef(types)
+      ),
+      {idField: 'id'}
+    );
+  }
+
+  retrieveWijn(types: string): Observable<Wijn[]> {
+    return collectionData<Wijn>(
+      query<Wijn>(
         this.#getCollectionRef(types)
       ),
       {idField: 'id'}

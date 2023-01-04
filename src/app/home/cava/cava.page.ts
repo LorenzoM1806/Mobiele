@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {DatabaseService} from '../../services/database.service';
+import {ObserveOnMessage} from 'rxjs/internal/operators/observeOn';
+import {Cava} from '../../../types/Cava';
+import {from, Observable} from 'rxjs';
 
 @Component({
   selector: 'app-cava',
@@ -7,7 +11,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CavaPage implements OnInit {
 
-  constructor() { }
+  naam = 'Cava';
+  messagesObservable: Observable<Cava[]> = from([]);
+
+  constructor(private dbService: DatabaseService ) {
+    this.messagesObservable = dbService.retrieveCava(this.naam);
+  }
 
   ngOnInit() {
   }

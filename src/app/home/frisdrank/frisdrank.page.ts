@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {from, Observable} from 'rxjs';
+import {DatabaseService} from '../../services/database.service';
+import {Frisdrank} from '../../../types/Frisdrank';
 
 @Component({
   selector: 'app-frisdrank',
@@ -7,8 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FrisdrankPage implements OnInit {
 
-  constructor() { }
+  naam = 'Frisdrank';
+  messagesObservable: Observable<Frisdrank[]> = from([]);
 
+  constructor(private dbService: DatabaseService ) {
+    this.messagesObservable = dbService.retrieveFrisdrank(this.naam);
+  }
   ngOnInit() {
   }
 

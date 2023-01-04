@@ -7,27 +7,14 @@
       <ion-title>Frisdranken</ion-title>
     </ion-toolbar>
   </ion-header>
+
   <ion-content class="ion-padding">
-    <ion-item>
-      <ion-label>Coca Cola</ion-label>
-      <ion-label class="ion-text-center">
-        12 €
-      </ion-label>
-      <ion-icon name="add-circle-outline">></ion-icon>
-    </ion-item>
-    <ion-item>
-      <ion-label>Fanta</ion-label>
-      <ion-label class="ion-text-center">
-        12 €
-      </ion-label>
-      <ion-icon name="add-circle-outline">></ion-icon>
-    </ion-item>
-    <ion-item>
-      <ion-label>Sprite</ion-label>
-      <ion-label class="ion-text-center">
-        12 €
-      </ion-label>
-      <ion-icon name="add-circle-outline">></ion-icon>
-    </ion-item>
+    <div *ngIf="(messagesObservable | async); let Frisdranken;else laden">
+      <ion-item *ngFor="let f of Frisdranken;let i = index">
+        <ion-label>{{f.name}}</ion-label>
+        <ion-label class="ion-text-center">{{f.price}}</ion-label>
+        <ion-icon name="add-circle-outline"></ion-icon>
+      </ion-item>
+    </div>
   </ion-content>
 </div>
