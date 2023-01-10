@@ -1,9 +1,13 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
+    <ion-title slot="start">
       Home
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-icon name="cart-outline" routerLink="/home/shopingcart" size="large"></ion-icon>
+    </ion-buttons>
   </ion-toolbar>
+
 </ion-header>
 
 <ion-content>
@@ -19,7 +23,5 @@
       <ion-button shape="round" routerLink="/home/frisdrank">Frisdrank</ion-button>
       <br>
       <ion-button shape="round" routerLink="/home/fruitsappen">Fruitsappen</ion-button>
-      <br>
-      <ion-button shape="round" routerLink="/home/account">Account</ion-button>
     </ion-list>
 </ion-content>

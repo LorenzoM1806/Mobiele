@@ -35,15 +35,10 @@ const routes: Routes = [
     loadChildren: () => import('./fruitsappen/fruitsappen.module').then( m => m.FruitsappenPageModule)
   },
   {
-    path: 'account',
-    loadChildren: () => import('./account/account.module').then(m => m.AccountPageModule),
-    canActivate: [AuthGuard],
-    data: {authGuardPipe: redirectUnauthorizedToLogin}
+    path: 'shopingcart',
+    loadChildren: () => import('./shopingcart/shopingcart.module').then( m => m.ShopingcartPageModule)
   },
-  {
-    path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
-  },
+
 
 
 ];
