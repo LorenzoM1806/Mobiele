@@ -19,8 +19,10 @@
       <div *ngIf="(messagesObservable | async); let biers;else laden">
           <ion-item *ngFor="let b of biers;let i = index">
             <ion-label>{{b.name}}</ion-label>
-            <ion-label class="ion-text-center">{{b.price}}</ion-label>
-            <ion-icon name="add-circle-outline"></ion-icon>
+            <ion-label class="ion-text-center">{{b.price}} €</ion-label>
+            <ion-button (click)="addToCart(b)">
+              <ion-icon name="add-circle-outline"></ion-icon>
+            </ion-button>
           </ion-item>
       </div>
   </ion-content>
