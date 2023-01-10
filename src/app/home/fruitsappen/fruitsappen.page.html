@@ -19,7 +19,9 @@
       <ion-item *ngFor="let f of Fruitsappen;let i = index">
         <ion-label>{{f.name}}</ion-label>
         <ion-label class="ion-text-center">{{f.price}}</ion-label>
+        <ion-button (click)="addToCart(f)">
         <ion-icon name="add-circle-outline"></ion-icon>
+        </ion-button>
       </ion-item>
     </div>
   </ion-content>

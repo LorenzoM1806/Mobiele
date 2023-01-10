@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {DatabaseService} from '../../services/database.service';
 import {ObserveOnMessage} from 'rxjs/internal/operators/observeOn';
 import {Cava} from '../../../types/Cava';
-import {from, Observable} from 'rxjs';
+import {BehaviorSubject, from, Observable} from 'rxjs';
+import {CartService} from '../../services/shoppingcart.service';
+import {ModalController} from '@ionic/angular';
 
 @Component({
   selector: 'app-cava',
@@ -13,12 +15,23 @@ export class CavaPage implements OnInit {
 
   naam = 'Cava';
   messagesObservable: Observable<Cava[]> = from([]);
+  cart = [];
+  cartItemClount: BehaviorSubject<number>;
 
-  constructor(private dbService: DatabaseService ) {
+  @ViewChild('cart', {static:false, read: ElementRef})fab: ElementRef;
+
+  constructor(private dbService: DatabaseService, private cartService: CartService, private modalCtrl: ModalController ) {
     this.messagesObservable = dbService.retrieveCava(this.naam);
   }
 
   ngOnInit() {
+    this.cart = this.cartService.getCart();
+    this.cartItemClount = this.cartService.getCartItemCount();
+  }
+
+  addToCart(b) {
+    console.log(`add ${b.name} to cart`);
+    this.cartService.addProduct(b);
   }
 
 }

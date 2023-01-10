@@ -19,7 +19,9 @@
       <ion-item *ngFor="let w of Waters;let i = index">
         <ion-label>{{w.name}}</ion-label>
         <ion-label class="ion-text-center">{{w.price}}</ion-label>
-        <ion-icon name="add-circle-outline"></ion-icon>
+        <ion-button (click)="addToCart(w)">
+          <ion-icon name="add-circle-outline"></ion-icon>
+        </ion-button>
       </ion-item>
     </div>
   </ion-content>

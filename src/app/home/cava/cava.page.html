@@ -20,7 +20,9 @@
       <ion-item *ngFor="let c of cavas;let i = index">
         <ion-label>{{c.name}}</ion-label>
         <ion-label class="ion-text-center">{{c.price}}</ion-label>
+        <ion-button (click)="addToCart(c)">
         <ion-icon name="add-circle-outline"></ion-icon>
+        </ion-button>
       </ion-item>
     </div>
   </ion-content>
