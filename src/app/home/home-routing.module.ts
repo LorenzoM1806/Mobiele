@@ -37,7 +37,11 @@ const routes: Routes = [
   {
     path: 'shopingcart',
     loadChildren: () => import('./shopingcart/shopingcart.module').then( m => m.ShopingcartPageModule)
+  },  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
+
 
 
 
