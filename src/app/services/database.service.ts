@@ -13,10 +13,11 @@ import {observableToBeFn} from 'rxjs/internal/testing/TestScheduler';
 import {Observable} from 'rxjs';
 import {Bier} from '../../types/bier';
 import {Cava} from '../../types/Cava';
-import {Frisdrank} from "../../types/Frisdrank";
-import {Fruitsap} from "../../types/Fruitsap";
-import {Water} from "../../types/Water";
-import {Wijn} from "../../types/Wijn";
+import {Frisdrank} from '../../types/Frisdrank';
+import {Fruitsap} from '../../types/Fruitsap';
+import {Water} from '../../types/Water';
+import {Wijn} from '../../types/Wijn';
+import {Account} from '../../types/Account';
 
 @Injectable({
   providedIn: 'root'
@@ -82,6 +83,15 @@ export class DatabaseService {
     return collectionData<Wijn>(
       query<Wijn>(
         this.#getCollectionRef(types)
+      ),
+      {idField: 'id'}
+    );
+  }
+
+  retrieveAccount(account: string): Observable<Account[]> {
+    return collectionData<Account>(
+      query<Account>(
+        this.#getCollectionRef(account)
       ),
       {idField: 'id'}
     );

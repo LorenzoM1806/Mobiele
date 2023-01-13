@@ -1,0 +1,30 @@
+<div>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button default-href="/"> Home </ion-back-button>
+    </ion-buttons>
+    <ion-title>Account</ion-title>
+    <ion-buttons slot="end">
+      <ion-icon name="cart-outline" routerLink="/home/shopingcart" size="large"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ng-template #laden>
+  <label>Fout</label>
+</ng-template>
+
+  <ion-content class="ion-padding">
+    <div *ngIf="(messageobservable | async); let accounts;else laden">
+      <ion-item *ngFor="let a of accounts;let i = index">
+        <ion-label>{{a.name}}</ion-label>
+        <ion-label>{{a.adres}}</ion-label>
+        <ion-label>{{a.bTWnummer}}</ion-label>
+        <ion-label>{{a.contactPersoon}}</ion-label>
+        <ion-label>{{a.mail}}</ion-label>
+        <ion-label>{{a.telefoonnummer}}</ion-label>
+      </ion-item>
+    </div>
+  </ion-content>
+</div>
