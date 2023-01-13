@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {AuthService} from '../services/auth.service';
+import {ModalController} from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +9,6 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  constructor(public  authService: AuthService, private modalContoller: ModalController) {}
 
 }

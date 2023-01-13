@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     signingConfigs {
         debug {
-            keyAlias 'key0'
+            keyAlias 'test0'
         }
     }
     compileSdkVersion rootProject.ext.compileSdkVersion

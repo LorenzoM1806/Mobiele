@@ -14,11 +14,21 @@ import {Injectable} from '@angular/core';
 export class AuthService {
 
   public currentUser: BehaviorSubject<null | User> = new BehaviorSubject<User | null>(undefined);
+  public accountuser: string | undefined;
   #authUnsubscribe: Unsubscribe;
 
   #verificationId: string;
   constructor(public auth: Auth, public router: Router) {
     this.#authUnsubscribe = this.auth.onAuthStateChanged(user => this.setCurrentUser(user));
+  }
+  isLoggedIn(): boolean {
+    return this.currentUser.value !== null && this.currentUser.value !== undefined;
+  }
+  getEmail(): string | undefined {
+    return this.isLoggedIn() ? this.currentUser.value.email : undefined;
+  }
+  getPhone(): string | undefined {
+    return this.isLoggedIn() , this.currentUser.value.phoneNumber;
   }
   async signInWithGoogle(): Promise<void> {
     const {credential: {idToken}} =
@@ -40,6 +50,9 @@ export class AuthService {
       PhoneAuthProvider.credential(this.#verificationId, verificationCode);
     await signInWithCredential(this.auth,credential);
   }
+  async signInWithFacebook(): Promise<void> {
+    const {credential: {idToken}} = await FirebaseAuthentication.signInWithFacebook();
+  }
 
   async signOut(): Promise<void> {
     await FirebaseAuthentication.signOut();
@@ -56,4 +69,6 @@ export class AuthService {
       await this.router.navigate(['/login']);
     }
   }
+
+
 }

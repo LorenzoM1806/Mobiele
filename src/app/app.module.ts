@@ -10,6 +10,7 @@ import {provideFirebaseApp,initializeApp} from '@angular/fire/app';
 import {environment} from '../environments/environment';
 import {enableMultiTabIndexedDbPersistence, getFirestore, provideFirestore} from '@angular/fire/firestore';
 import {getAuth, provideAuth} from '@angular/fire/auth';
+import {ServiceWorkerModule} from '@angular/service-worker';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,6 +26,12 @@ import {getAuth, provideAuth} from '@angular/fire/auth';
               enableMultiTabIndexedDbPersistence(firestore);
               return firestore;
             }),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

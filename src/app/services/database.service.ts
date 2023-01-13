@@ -5,7 +5,8 @@ import {
   doc,
   DocumentReference,
   collectionData,
-  query
+  query,
+  where, addDoc
 } from '@angular/fire/firestore';
 import {Injectable} from '@angular/core';
 import {AuthService} from './auth.service';
@@ -18,6 +19,7 @@ import {Fruitsap} from '../../types/Fruitsap';
 import {Water} from '../../types/Water';
 import {Wijn} from '../../types/Wijn';
 import {Account} from '../../types/Account';
+import {promise} from "protractor";
 
 @Injectable({
   providedIn: 'root'
@@ -96,5 +98,38 @@ export class DatabaseService {
       {idField: 'id'}
     );
   }
+
+  retrieveAccountWithEmail(accountmail: string): Observable<Account[]> {
+    return collectionData<Account>(
+      query<Account>(
+        this.#getCollectionRef(accountmail),
+        where('mail', '==', this.authService.getEmail())
+      ),
+      {idField: 'id'}
+    );
+}
+  retrieveAccountWithPhonenumber(accountPhone: string): Observable<Account[]> {
+    return collectionData<Account>(
+      query<Account>(
+        this.#getCollectionRef(accountPhone),
+        where('telefoonnummer', '==', this.authService.getPhone())
+      ),
+      {idField: 'id'}
+    );
+}
+async createAccount(idnaam:string,adres: string, bTWnummer: string, contactPersoon: string, mail: string, naam: string, telefoonnummer: string): Promise<void> {
+    const newAccount = {
+      adres: adres,
+      bTWnummer: bTWnummer,
+      contactPersoon: contactPersoon,
+      mail: mail,
+      name: naam,
+      telefoonnummer: telefoonnummer
+    };
+    await addDoc<Account>(
+      this.#getCollectionRef<Account>(idnaam),
+      newAccount
+    );
+}
 
 }
