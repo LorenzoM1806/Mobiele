@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {CartService, Product} from "../../services/shoppingcart.service";
-import {ModalController} from "@ionic/angular";
+import {CartService, Product} from '../../services/shoppingcart.service';
+import {ModalController} from '@ionic/angular';
 
 @Component({
   selector: 'app-shopingcart',

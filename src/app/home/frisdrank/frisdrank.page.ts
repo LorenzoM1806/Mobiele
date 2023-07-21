@@ -17,8 +17,6 @@ export class FrisdrankPage implements OnInit {
   cart = [];
   cartItemClount: BehaviorSubject<number>;
 
-  @ViewChild('cart', {static:false, read: ElementRef})fab: ElementRef;
-
   constructor(private dbService: DatabaseService, private cartService: CartService, private modalCtrl: ModalController ) {
     this.messagesObservable = dbService.retrieveFrisdrank(this.naam);
   }

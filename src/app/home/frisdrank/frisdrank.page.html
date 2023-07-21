@@ -11,6 +11,10 @@
     </ion-toolbar>
   </ion-header>
 
+  <ng-template #laden>
+    <label>Fout</label>
+  </ng-template>
+
   <ion-content class="ion-padding">
     <div *ngIf="(messagesObservable | async); let Frisdranken;else laden">
       <ion-item *ngFor="let f of Frisdranken;let i = index">

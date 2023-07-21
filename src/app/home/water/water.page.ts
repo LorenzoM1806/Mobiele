@@ -2,8 +2,8 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {BehaviorSubject, from, Observable} from 'rxjs';
 import {DatabaseService} from '../../services/database.service';
 import {Water} from '../../../types/Water';
-import {CartService} from "../../services/shoppingcart.service";
-import {ModalController} from "@ionic/angular";
+import {CartService} from '../../services/shoppingcart.service';
+import {ModalController} from '@ionic/angular';
 
 @Component({
   selector: 'app-water',
@@ -16,8 +16,6 @@ export class WaterPage implements OnInit {
   messagesObservable: Observable<Water[]> = from([]);
   cart = [];
   cartItemClount: BehaviorSubject<number>;
-
-  @ViewChild('cart', {static:false, read: ElementRef})fab: ElementRef;
 
   constructor(private dbService: DatabaseService, private cartService: CartService, private modalCtrl: ModalController ) {
     this.messagesObservable = dbService.retrieveWater(this.naam);

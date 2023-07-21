@@ -10,8 +10,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "android": "ionic build --prod && pnpm exec cap sync android && pnpm exec cap open android",
-    "pwa-resources":"pwa-asset-generator ./resources/icon.png ./src/assets/icons -m ./src/manifest.webmanifest -i ./src/index.html"
+    "android": "ionic build --prod && pnpm exec cap sync android && pnpm exec cap open android"
   },
   "private": true,
   "dependencies": {

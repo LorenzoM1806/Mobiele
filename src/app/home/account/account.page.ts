@@ -3,8 +3,6 @@ import {from, Observable} from 'rxjs';
 import {Account} from '../../../types/Account';
 import {DatabaseService} from '../../services/database.service';
 import {IonModal} from '@ionic/angular';
-import { OverlayEventDetail } from '@ionic/core/components';
-import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-account',
@@ -31,7 +29,7 @@ export class AccountPage implements OnInit {
     this.modal.dismiss(this.email, 'confirm');
   }
   onWillDismiss(event: Event) {
-    const ev = event as CustomEvent<OverlayEventDetail<string>>;
+    const ev = event as any;
     if (ev.detail.role === 'confirm') {
       if(this.email === undefined)
       {
