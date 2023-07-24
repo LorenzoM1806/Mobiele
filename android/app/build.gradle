@@ -3,7 +3,10 @@ apply plugin: 'com.android.application'
 android {
     signingConfigs {
         debug {
-            keyAlias 'test0'
+            keyAlias 'AppMob'
+            storeFile file('C:\\Users\\loren\\OneDrive\\Documenten\\jaar_2022-2023\\Mobiele_Apllicaties\\project\\Applicatie\\key2.jks')
+            storePassword 'Renzo123'
+            keyPassword 'Renzo123'
         }
     }
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -24,7 +27,11 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+          signingConfig signingConfigs.debug
         }
+      debug {
+        signingConfig signingConfigs.debug
+      }
     }
 }
 
