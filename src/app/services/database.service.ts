@@ -102,7 +102,7 @@ export class DatabaseService {
     return collectionData<Account>(
       query<Account>(
         this.#getCollectionRef(accountmail),
-        where('mail', '==', this.authService.getEmail())
+        where('email', '==', this.authService.getEmail())
       ),
       {idField: 'id'}
     );
