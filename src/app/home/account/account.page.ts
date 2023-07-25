@@ -19,7 +19,7 @@ export class AccountPage implements OnInit {
   email: string;
 
   constructor(private dbService: DatabaseService) {
-    this.messagesObservable = dbService.retrieveAccountWithEmail(this.naam);
+    this.messagesObservable = dbService.retrieveAccount(this.naam);
     //this.messagesObservable = dbService.retrieveAccountWithPhonenumber(this.naam);
   }
   cancel() {

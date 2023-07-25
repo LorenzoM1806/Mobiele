@@ -19,7 +19,6 @@ import {Fruitsap} from '../../types/Fruitsap';
 import {Water} from '../../types/Water';
 import {Wijn} from '../../types/Wijn';
 import {Account} from '../../types/Account';
-import {promise} from "protractor";
 
 @Injectable({
   providedIn: 'root'
@@ -108,23 +107,15 @@ export class DatabaseService {
       {idField: 'id'}
     );
 }
-  retrieveAccountWithPhonenumber(accountPhone: string): Observable<Account[]> {
-    return collectionData<Account>(
-      query<Account>(
-        this.#getCollectionRef(accountPhone),
-        where('telefoonnummer', '==', this.authService.getPhone())
-      ),
-      {idField: 'id'}
-    );
-}
-async createAccount(idnaam:string,adres: string, bTWnummer: string, contactPersoon: string, mail: string, naam: string, telefoonnummer: string): Promise<void> {
+async createAccount(idnaam: string,adress: string,
+  city: string, name: string, email: string, postcode: string, prename: string): Promise<void> {
     const newAccount = {
-      adres: adres,
-      bTWnummer: bTWnummer,
-      contactPersoon: contactPersoon,
-      mail: mail,
-      name: naam,
-      telefoonnummer: telefoonnummer
+      adress,
+      city,
+      email,
+      name,
+      postcode,
+      prename
     };
     await addDoc<Account>(
       this.#getCollectionRef<Account>(idnaam),
