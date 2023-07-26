@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CartService, Product} from '../../services/shoppingcart.service';
 import {ModalController} from '@ionic/angular';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-shopingcart',
@@ -10,6 +11,8 @@ import {ModalController} from '@ionic/angular';
 export class ShopingcartPage implements OnInit {
 
   cart: Product[] = [];
+  message: string;
+  private cartItemCount = this.cartService.getCartItemCount();
 
   constructor(
     private cartService: CartService,
@@ -38,6 +41,17 @@ export class ShopingcartPage implements OnInit {
     this.modalCtrl.dismiss();
   }
 
-  checkout() {}
+  checkout() {
+
+    if(this.cartItemCount.getValue() === 0)
+    {
+      this.message = 'Er is niets om uit te checken!';
+    }
+    else
+    {
+      this.message = 'Bedankt voor de aankoop\nUw offerte zal verwerkt worden binnen de 3 werkdagen.'+
+      '\n U zal hier ook een bevestiginsmail van krijgen.';
+    }
+  }
 
 }
