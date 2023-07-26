@@ -5,6 +5,7 @@ import {Bier} from '../../../types/bier';
 import {BehaviorSubject, from, Observable} from 'rxjs';
 import {CartService, Product} from '../../services/shoppingcart.service';
 import {ModalController} from '@ionic/angular';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-bier',
@@ -18,7 +19,8 @@ export class BierPage implements OnInit {
   cart = [];
   cartItemClount: BehaviorSubject<number>;
 
-  constructor(private dbService: DatabaseService, private cartService: CartService, private modalCtrl: ModalController) {
+  constructor(private dbService: DatabaseService, private cartService: CartService, private modalCtrl: ModalController,
+    public authService: AuthService) {
     this.messagesObservable = dbService.retrieveBieren(this.naam);
   }
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {CartService, Product} from '../../services/shoppingcart.service';
 import {ModalController} from '@ionic/angular';
 import { environment } from 'src/environments/environment';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-shopingcart',
@@ -16,7 +17,8 @@ export class ShopingcartPage implements OnInit {
 
   constructor(
     private cartService: CartService,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    public authService: AuthService
   ) { }
 
   ngOnInit() {

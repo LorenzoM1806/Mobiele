@@ -4,6 +4,7 @@ import {DatabaseService} from '../../services/database.service';
 import {Wijn} from '../../../types/Wijn';
 import {CartService} from '../../services/shoppingcart.service';
 import {ModalController} from '@ionic/angular';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-wijn',
@@ -17,7 +18,8 @@ export class WijnPage implements OnInit {
   cart = [];
   cartItemClount: BehaviorSubject<number>;
 
-  constructor(private dbService: DatabaseService, private cartService: CartService, private modalCtrl: ModalController) {
+  constructor(private dbService: DatabaseService, private cartService: CartService, private modalCtrl: ModalController,
+    public authService: AuthService) {
     this.messagesObservable = dbService.retrieveWater(this.naam);
   }
   ngOnInit() {

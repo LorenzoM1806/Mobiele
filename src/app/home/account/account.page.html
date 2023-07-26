@@ -7,7 +7,7 @@
       <ion-icon name="cart-outline" routerLink="/home/shopingcart" size="large"></ion-icon>
     </ion-buttons>
     <ion-buttons slot="end" routerLink="/login">
-      <ion-icon name="log-out-outline" (click)="authService.signOut()" size="large"></ion-icon>
+      <ion-icon name="log-out-outline" (click)="authservice.signOut()" size="large"></ion-icon>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -42,8 +42,66 @@
     </div>
 </ion-content>
   
-<!--Create-->
-<!--Update-->
+<!--Create--> 
+<ion-content class="ion-padding">
+  <ion-button id="open-modal" [disabled]="disable">Create</ion-button>
+  <ion-modal trigger="open-modal">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button (click)="cancel()">Cancel</ion-button>
+          </ion-buttons>
+          <ion-buttons slot="end">
+            <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <ion-item>
+          <ion-label position="stacked">Enter your name</ion-label>
+          <ion-input type="text" placeholder="Your name" [(ngModel)]="name"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Enter your prename</ion-label>
+          <ion-input type="text" placeholder="Your prename" [(ngModel)]="prename"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Enter your email</ion-label>
+          <ion-input type="text" placeholder="Your email" [(ngModel)]="emailCreate"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Enter your phone</ion-label>
+          <ion-input type="text" placeholder="Your phone" [(ngModel)]="phone"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Enter your adress</ion-label>
+          <ion-input type="text" placeholder="Your adress" [(ngModel)]="adress"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Enter your city</ion-label>
+          <ion-input type="text" placeholder="Your city" [(ngModel)]="city"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Enter your postcode</ion-label>
+          <ion-input type="text" placeholder="Your postcode" [(ngModel)]="postcode"></ion-input>
+        </ion-item>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+<!--Update--> 
+  <ion-button (click)="update()">
+    Update account
+  </ion-button>
 <!--Delete-->
+  <ion-button (click)="delete()">
+      Delete
+  </ion-button>
+
+</ion-content>
+
+
+
 
 </div>

@@ -19,7 +19,18 @@ export class AccountPage implements OnInit {
   message = 'geen account gevonden';
   email: string;
   user: Observable<Account[]> = from([]);
-  constructor(private dbService: DatabaseService, private authservice: AuthService) {
+
+  adress: string;
+  city: string;
+  name: string;
+  postcode: string;
+  prename: string;
+  phone: string;
+  emailCreate: string;
+
+  disable = true;
+
+  constructor(private dbService: DatabaseService, public authservice: AuthService) {
     if(this.authservice.getEmail() === undefined)
     {
       this.messagesObservable = dbService.retrieveAccountWithPhone(this.naam);
@@ -30,6 +41,23 @@ export class AccountPage implements OnInit {
     }
     this.email = authservice.getEmail();
     //this.messagesObservable = dbService.retrieveAccountWithPhonenumber(this.naam);
+  }
+
+  cancel() {
+    this.modal.dismiss(null, 'cancel');
+  }
+
+  confirm() {
+    this.dbService.createAccount(this.naam,this.adress,this.city,this.name,this.email,this.postcode,this.prename,this.phone);
+    this.modal.dismiss(null, 'confirm');
+  }
+
+  delete() {
+
+  }
+
+  update() {
+
   }
 
   ngOnInit() {

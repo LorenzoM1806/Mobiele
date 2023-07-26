@@ -6,7 +6,7 @@ import {
   DocumentReference,
   collectionData,
   query,
-  where, addDoc
+  where, addDoc, deleteDoc
 } from '@angular/fire/firestore';
 import {Injectable} from '@angular/core';
 import {AuthService} from './auth.service';
@@ -19,6 +19,7 @@ import {Fruitsap} from '../../types/Fruitsap';
 import {Water} from '../../types/Water';
 import {Wijn} from '../../types/Wijn';
 import {Account} from '../../types/Account';
+import { promise } from 'protractor';
 
 @Injectable({
   providedIn: 'root'
@@ -133,5 +134,10 @@ async createAccount(idnaam: string,adress: string,
       newAccount
     );
 }
+
+async deleteAccount(idnaam: string, id: string): Promise<void> {
+  await deleteDoc(this.#getDocumentRef(idnaam,id));
+}
+
 
 }
