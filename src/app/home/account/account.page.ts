@@ -20,7 +20,14 @@ export class AccountPage implements OnInit {
   email: string;
   user: Observable<Account[]> = from([]);
   constructor(private dbService: DatabaseService, private authservice: AuthService) {
-    this.messagesObservable = dbService.retrieveAccountWithEmail(this.naam);
+    if(this.authservice.getEmail() === undefined)
+    {
+      this.messagesObservable = dbService.retrieveAccountWithPhone(this.naam);
+    }
+    else
+    {
+      this.messagesObservable = dbService.retrieveAccountWithEmail(this.naam);
+    }
     this.email = authservice.getEmail();
     //this.messagesObservable = dbService.retrieveAccountWithPhonenumber(this.naam);
   }

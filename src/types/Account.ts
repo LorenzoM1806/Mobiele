@@ -5,4 +5,5 @@ export interface Account {
   name: string;
   postcode: string;
   prename: string;
+  phone: string;
 }

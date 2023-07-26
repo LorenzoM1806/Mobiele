@@ -107,15 +107,26 @@ export class DatabaseService {
       {idField: 'id'}
     );
 }
+
+retrieveAccountWithPhone(accountphone: string): Observable<Account[]> {
+  return collectionData<Account>(
+    query<Account>(
+      this.#getCollectionRef(accountphone),
+      where('phone', '==', this.authService.getPhone())
+    ),
+    {idField: 'id'}
+  );
+}
 async createAccount(idnaam: string,adress: string,
-  city: string, name: string, email: string, postcode: string, prename: string): Promise<void> {
+  city: string, name: string, email: string, postcode: string, prename: string, phone: string): Promise<void> {
     const newAccount = {
       adress,
       city,
       email,
       name,
       postcode,
-      prename
+      prename,
+      phone
     };
     await addDoc<Account>(
       this.#getCollectionRef<Account>(idnaam),
