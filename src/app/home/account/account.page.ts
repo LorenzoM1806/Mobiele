@@ -52,7 +52,7 @@ export class AccountPage implements OnInit {
   }
 
   delete(id: string) {
-    //this.dbService.deleteAccount(this.naam,id);
+    this.dbService.deleteAccount(this.naam,id);
     console.log(id);
   }
 
