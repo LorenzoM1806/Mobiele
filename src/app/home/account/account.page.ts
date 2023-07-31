@@ -27,7 +27,7 @@ export class AccountPage implements OnInit {
   prename: string;
   phone: string;
   emailCreate: string;
-
+  id: string;
   disable = true;
 
   constructor(private dbService: DatabaseService, public authservice: AuthService) {
@@ -40,7 +40,6 @@ export class AccountPage implements OnInit {
       this.messagesObservable = dbService.retrieveAccountWithEmail(this.naam);
     }
     this.email = authservice.getEmail();
-    //this.messagesObservable = dbService.retrieveAccountWithPhonenumber(this.naam);
   }
 
   cancel() {
@@ -52,12 +51,12 @@ export class AccountPage implements OnInit {
     this.modal.dismiss(null, 'confirm');
   }
 
-  delete() {
-
+  delete(id: string) {
+    //this.dbService.deleteAccount(this.naam,id);
+    console.log(id);
   }
 
   update() {
-
   }
 
   ngOnInit() {

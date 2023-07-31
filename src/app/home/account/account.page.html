@@ -21,6 +21,9 @@
     <div *ngIf="(messagesObservable | async); let accounts;else laden">
       <ion-list *ngFor="let a of accounts; let i = index">
         <ion-item>
+          <ion-label>{{a.id}}</ion-label>
+        </ion-item>
+        <ion-item>
           <ion-label>{{a.name}}</ion-label>
         </ion-item>
         <ion-item>
@@ -60,31 +63,31 @@
       <ion-content class="ion-padding">
         <ion-item>
           <ion-label position="stacked">Enter your name</ion-label>
-          <ion-input type="text" placeholder="Your name" [(ngModel)]="name"></ion-input>
+          <ion-input type="text" placeholder="Your name" [(ngModel)]="name" name="name"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="stacked">Enter your prename</ion-label>
-          <ion-input type="text" placeholder="Your prename" [(ngModel)]="prename"></ion-input>
+          <ion-input type="text" placeholder="Your prename" [(ngModel)]="prename" name="prename"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="stacked">Enter your email</ion-label>
-          <ion-input type="text" placeholder="Your email" [(ngModel)]="emailCreate"></ion-input>
+          <ion-input type="text" placeholder="Your email" [(ngModel)]="emailCreate" name="email"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="stacked">Enter your phone</ion-label>
-          <ion-input type="text" placeholder="Your phone" [(ngModel)]="phone"></ion-input>
+          <ion-input type="text" placeholder="Your phone" [(ngModel)]="phone" name="phone"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="stacked">Enter your adress</ion-label>
-          <ion-input type="text" placeholder="Your adress" [(ngModel)]="adress"></ion-input>
+          <ion-input type="text" placeholder="Your adress" [(ngModel)]="adress" name="adress"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="stacked">Enter your city</ion-label>
-          <ion-input type="text" placeholder="Your city" [(ngModel)]="city"></ion-input>
+          <ion-input type="text" placeholder="Your city" [(ngModel)]="city" name="city"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="stacked">Enter your postcode</ion-label>
-          <ion-input type="text" placeholder="Your postcode" [(ngModel)]="postcode"></ion-input>
+          <ion-input type="text" placeholder="Your postcode" [(ngModel)]="postcode" name="postcode"></ion-input>
         </ion-item>
       </ion-content>
     </ng-template>
@@ -95,10 +98,14 @@
     Update account
   </ion-button>
 <!--Delete-->
-  <ion-button (click)="delete()">
+
+<div *ngIf="(messagesObservable | async); let accounts;else laden">
+  <ion-list *ngFor="let a of accounts; let i = index">
+  <ion-button (click)="delete(a.id)">
       Delete
   </ion-button>
-
+  </ion-list>
+</div>
 </ion-content>
 
 
