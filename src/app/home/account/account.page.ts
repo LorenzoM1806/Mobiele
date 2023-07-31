@@ -56,7 +56,11 @@ export class AccountPage implements OnInit {
     console.log(id);
   }
 
-  update() {
+  update(id: string) {
+    const account = {adress: this.adress, city: this.city, email: this.email, name: this.name, postcode: this.postcode,
+      prename: this.prename, phone: this.phone};
+    this.dbService.updateAccount(this.naam,id,account);
+    this.modal.dismiss(null, 'confirm');
   }
 
   ngOnInit() {

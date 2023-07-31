@@ -6,7 +6,7 @@ import {
   DocumentReference,
   collectionData,
   query,
-  where, addDoc, deleteDoc
+  where, addDoc, deleteDoc, updateDoc
 } from '@angular/fire/firestore';
 import {Injectable} from '@angular/core';
 import {AuthService} from './auth.service';
@@ -139,5 +139,8 @@ async deleteAccount(idnaam: string, id: string): Promise<void> {
   await deleteDoc(this.#getDocumentRef(idnaam,id));
 }
 
+async updateAccount(idnaam: string, id: string, acnt: Account): Promise<void> {
+  await updateDoc(this.#getDocumentRef(idnaam, id), acnt);
+}
 
 }
