@@ -63,6 +63,17 @@ export class AccountPage implements OnInit {
     this.modal.dismiss(null, 'confirm');
   }
 
+  check() {
+    if(this.messagesObservable == null || this.messagesObservable === undefined)
+    {
+      this.disable = false;
+    }
+    else
+    {
+      this.disable = true;
+    }
+  }
+
   ngOnInit() {
   }
 

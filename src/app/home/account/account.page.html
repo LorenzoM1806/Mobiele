@@ -21,9 +21,6 @@
     <div *ngIf="(messagesObservable | async); let accounts;else laden">
       <ion-list *ngFor="let a of accounts; let i = index">
         <ion-item>
-          <ion-label>{{a.id}}</ion-label>
-        </ion-item>
-        <ion-item>
           <ion-label>{{a.name}}</ion-label>
         </ion-item>
         <ion-item>
@@ -47,7 +44,7 @@
   
 <!--Create--> 
 <ion-content class="ion-padding">
-  <ion-button id="open-modal" [disabled]="disable">Create</ion-button>
+  <ion-button id="open-modal" [disabled]="!check()">Create</ion-button>
   <ion-modal trigger="open-modal">
     <ng-template>
       <ion-header>
@@ -96,7 +93,7 @@
 <!--Update--> 
 <div *ngIf="(messagesObservable | async); let accounts;else laden">
   <ion-list *ngFor="let a of accounts; let i = index">
-    <ion-button id="open-update" >Update</ion-button>
+    <ion-button id="open-update" [disabled]="check()">Update</ion-button>
     <ion-modal trigger="open-update">
       <ng-template>
         <ion-header>
@@ -147,7 +144,7 @@
 
 <div *ngIf="(messagesObservable | async); let accounts;else laden">
   <ion-list *ngFor="let a of accounts; let i = index">
-  <ion-button (click)="delete(a.id)">
+  <ion-button (click)="delete(a.id)" [disabled]="check()">
       Delete
   </ion-button>
   </ion-list>
