@@ -10,18 +10,7 @@ import { AuthService } from '../services/auth.service';
 export class SplashPage implements OnInit {
 
   constructor(public router: Router, public  authService: AuthService) {
-    if(this.authService.isLoggedIn())
-    {
-      setTimeout(() =>{
-        this.authService.goToCurrentPage('home');
-     },2000);
-    }
-    else
-    {
-      setTimeout(() =>{
-        this.authService.goToCurrentPage('login');
-     },2000);
-    }
+
   }
 
   ngOnInit() {

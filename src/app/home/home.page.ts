@@ -9,6 +9,8 @@ import {ModalController} from '@ionic/angular';
 })
 export class HomePage {
 
-  constructor(public  authService: AuthService, private modalContoller: ModalController) {}
+  constructor(public  authService: AuthService, private modalContoller: ModalController) {
+
+  }
 
 }

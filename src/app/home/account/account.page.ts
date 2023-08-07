@@ -31,6 +31,7 @@ export class AccountPage implements OnInit {
   emailCreate: string;
   id: string;
   disable = true;
+  createDisable = true;
 
   constructor(private dbService: DatabaseService, public authservice: AuthService, public route: Router) {
     if(this.authservice.getEmail() === undefined)
@@ -52,10 +53,12 @@ export class AccountPage implements OnInit {
     this.dbService.createAccount(this.naam,this.adress,this.city,this.name,this.email,
       this.postcode,this.prename,this.phone);
       this.setOpen(false);
+      this.createDisable = true;
   }
 
   delete(id: string) {
     this.dbService.deleteAccount(this.naam,id);
+    this.createDisable = !this.createDisable;
   }
 
   update(id: string) {
@@ -66,7 +69,7 @@ export class AccountPage implements OnInit {
   }
 
   check() {
-    if(this.messagesObservable == null || this.messagesObservable === undefined)
+    if(this.messagesObservable === null || this.messagesObservable === undefined)
     {
       this.disable = false;
     }
