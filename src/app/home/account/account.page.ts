@@ -48,7 +48,7 @@ export class AccountPage implements OnInit {
     this.modal.dismiss(null, 'cancel');
   }
 
-  confirm(id: string) {
+  confirm() {
     this.dbService.createAccount(this.naam,this.adress,this.city,this.name,this.email,
       this.postcode,this.prename,this.phone);
       this.setOpen(false);
