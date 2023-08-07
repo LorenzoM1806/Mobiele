@@ -118,9 +118,10 @@ retrieveAccountWithPhone(accountphone: string): Observable<Account[]> {
     {idField: 'id'}
   );
 }
-async createAccount(idnaam: string,adress: string,
+async createAccount(id: string,idnaam: string,adress: string,
   city: string, name: string, email: string, postcode: string, prename: string, phone: string): Promise<void> {
     const newAccount = {
+      id,
       adress,
       city,
       email,

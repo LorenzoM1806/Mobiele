@@ -46,8 +46,8 @@ export class AccountPage implements OnInit {
     this.modal.dismiss(null, 'cancel');
   }
 
-  confirm() {
-    this.dbService.createAccount(this.naam,this.adress,this.city,this.name,this.email,this.postcode,this.prename,this.phone);
+  confirm(id: string) {
+    this.dbService.createAccount(id,this.naam,this.adress,this.city,this.name,this.email,this.postcode,this.prename,this.phone);
     this.modal.dismiss(null, 'confirm');
   }
 
@@ -57,7 +57,7 @@ export class AccountPage implements OnInit {
   }
 
   update(id: string) {
-    const account = {adress: this.adress, city: this.city, email: this.email, name: this.name, postcode: this.postcode,
+    const account = {id, adress: this.adress, city: this.city, email: this.email, name: this.name, postcode: this.postcode,
       prename: this.prename, phone: this.phone};
     this.dbService.updateAccount(this.naam,id,account);
     this.modal.dismiss(null, 'confirm');
