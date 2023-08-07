@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-splash',
@@ -8,10 +9,19 @@ import { Router } from '@angular/router';
 })
 export class SplashPage implements OnInit {
 
-  constructor(public router: Router) {
-    setTimeout(() =>{
-       this.router.navigate(['/home']);
-    },2000);
+  constructor(public router: Router, public  authService: AuthService) {
+    if(this.authService.isLoggedIn())
+    {
+      setTimeout(() =>{
+        this.authService.goToCurrentPage('home');
+     },2000);
+    }
+    else
+    {
+      setTimeout(() =>{
+        this.authService.goToCurrentPage('login');
+     },2000);
+    }
   }
 
   ngOnInit() {
