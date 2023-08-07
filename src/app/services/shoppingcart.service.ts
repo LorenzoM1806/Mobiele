@@ -19,6 +19,11 @@ export class CartService {
 
   constructor() {}
 
+  clearCart() {
+    this.cart = [];
+    this.cartItemCount.next(0);
+  }
+
   getCart(): Product[] {
     console.log('this.cart: ', this.cart);
     return this.cart;
