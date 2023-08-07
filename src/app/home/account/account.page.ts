@@ -4,7 +4,7 @@ import {Account} from '../../../types/Account';
 import {DatabaseService} from '../../services/database.service';
 import {AuthService} from '../../services/auth.service';
 import {IonModal} from '@ionic/angular';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-account',
   templateUrl: './account.page.html',
@@ -20,6 +20,8 @@ export class AccountPage implements OnInit {
   email: string;
   user: Observable<Account[]> = from([]);
 
+  isModalOpen = false;
+
   adress: string;
   city: string;
   name: string;
@@ -30,7 +32,7 @@ export class AccountPage implements OnInit {
   id: string;
   disable = true;
 
-  constructor(private dbService: DatabaseService, public authservice: AuthService) {
+  constructor(private dbService: DatabaseService, public authservice: AuthService, public route: Router) {
     if(this.authservice.getEmail() === undefined)
     {
       this.messagesObservable = dbService.retrieveAccountWithPhone(this.naam);
@@ -47,20 +49,20 @@ export class AccountPage implements OnInit {
   }
 
   confirm(id: string) {
-    this.dbService.createAccount(id,this.naam,this.adress,this.city,this.name,this.email,this.postcode,this.prename,this.phone);
-    this.modal.dismiss(null, 'confirm');
+    this.dbService.createAccount(this.naam,this.adress,this.city,this.name,this.email,
+      this.postcode,this.prename,this.phone);
+      this.setOpen(false);
   }
 
   delete(id: string) {
     this.dbService.deleteAccount(this.naam,id);
-    console.log(id);
   }
 
   update(id: string) {
     const account = {id, adress: this.adress, city: this.city, email: this.email, name: this.name, postcode: this.postcode,
       prename: this.prename, phone: this.phone};
-    this.dbService.updateAccount(this.naam,id,account);
-    this.modal.dismiss(null, 'confirm');
+      this.dbService.updateAccount(this.naam,id,account);
+    this.setOpen(false);
   }
 
   check() {
@@ -72,6 +74,10 @@ export class AccountPage implements OnInit {
     {
       this.disable = true;
     }
+  }
+
+  setOpen(isOpen: boolean) {
+    this.isModalOpen = isOpen;
   }
 
   ngOnInit() {

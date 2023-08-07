@@ -19,6 +19,7 @@ import {Fruitsap} from '../../types/Fruitsap';
 import {Water} from '../../types/Water';
 import {Wijn} from '../../types/Wijn';
 import {Account} from '../../types/Account';
+import { AccountCreate } from 'src/types/AccountCreate';
 import { promise } from 'protractor';
 
 @Injectable({
@@ -118,10 +119,9 @@ retrieveAccountWithPhone(accountphone: string): Observable<Account[]> {
     {idField: 'id'}
   );
 }
-async createAccount(id: string,idnaam: string,adress: string,
+async createAccount(idnaam: string,adress: string,
   city: string, name: string, email: string, postcode: string, prename: string, phone: string): Promise<void> {
     const newAccount = {
-      id,
       adress,
       city,
       email,
@@ -130,8 +130,8 @@ async createAccount(id: string,idnaam: string,adress: string,
       prename,
       phone
     };
-    await addDoc<Account>(
-      this.#getCollectionRef<Account>(idnaam),
+    await addDoc<AccountCreate>(
+      this.#getCollectionRef<AccountCreate>(idnaam),
       newAccount
     );
 }
