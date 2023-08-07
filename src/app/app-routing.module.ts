@@ -20,6 +20,10 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () => import('./home/login/login.module').then(m => m.LoginPageModule)
   },
+  {
+    path: 'splash',
+    loadChildren: () => import('./splash/splash.module').then( m => m.SplashPageModule)
+  },
 ];
 
 @NgModule({
