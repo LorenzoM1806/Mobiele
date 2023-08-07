@@ -4,7 +4,7 @@ import {ObserveOnMessage} from 'rxjs/internal/operators/observeOn';
 import {Bier} from '../../../types/bier';
 import {BehaviorSubject, from, Observable} from 'rxjs';
 import {CartService, Product} from '../../services/shoppingcart.service';
-import {ModalController} from '@ionic/angular';
+import {IonMenu, ModalController} from '@ionic/angular';
 import {AuthService} from '../../services/auth.service';
 
 @Component({
