@@ -18,9 +18,10 @@ export class SplashPage implements OnInit {
         this.router.navigate(['/login']);
       }
     }, 2000);
+    console.log(this.authService.isLoggedIn());
   }
 
   ngOnInit() {
+    console.log('Hi dit is een test');
   }
-
 }

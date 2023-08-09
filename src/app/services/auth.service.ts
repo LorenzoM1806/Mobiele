@@ -64,7 +64,7 @@ export class AuthService {
   private async setCurrentUser(user: User | null): Promise<void> {
     this.currentUser.next(user);
     if(!this.currentUser) {
-      this.router.navigate(['/login']);
+      await this.router.navigate(['/login']);
     } else {
       await this.router.navigate(['/home']);
     }
