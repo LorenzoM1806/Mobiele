@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
+  <ion-toolbar color="primary">
+    <ion-title>Login</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -8,7 +8,7 @@
 <ion-grid>
   <ion-row>
     <ion-col>
-      <ion-item class="ion-margin-vertical" color="light" (click)="authService.signInWithGoogle()">
+      <ion-item class="ion-margin-vertical" color="primary" (click)="authService.signInWithGoogle()">
         <div slot="start">
           <ion-icon size="large" name="logo-google"></ion-icon>
         </div>
@@ -16,7 +16,7 @@
       </ion-item>
     </ion-col>
     <ion-col>
-      <ion-item class="ion-margin-vertical" color="light" (click)="authService.signInWithFacebook()">
+      <ion-item class="ion-margin-vertical" color="primary" (click)="authService.signInWithFacebook()">
         <div slot="start">
           <ion-icon size="large" name="logo-facebook"></ion-icon>
         </div>
