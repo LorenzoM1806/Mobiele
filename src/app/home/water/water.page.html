@@ -18,8 +18,7 @@
   <ion-content class="ion-padding">
     <div *ngIf="(messagesObservable | async); let Waters;else laden">
       <ion-item *ngFor="let w of Waters;let i = index">
-        <ion-label>{{w.name}}</ion-label>
-        <ion-label class="ion-text-center">{{w.price}}</ion-label>
+        <ion-label>{{w.name}}<br>{{w.price}} €</ion-label>
         <ion-button (click)="addToCart(w)">
           <ion-icon name="add-circle-outline"></ion-icon>
         </ion-button>
