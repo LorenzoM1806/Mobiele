@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { SplashPage } from './splash.page';
 import { HomePage } from '../home/home.page';
+import { LoginPage } from '../home/login/login.page';
 
 const routes: Routes = [
   {
@@ -10,8 +11,8 @@ const routes: Routes = [
     component: SplashPage
   },
   {
-    path: 'home',
-    loadChildren: () => import('../home/home.module').then( m => m.HomePageModule)
+    path: 'login',
+    loadChildren: () => import('../home/login/login.module').then(m => m.LoginPageModule)
   }
 ];
 

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import {AuthGuard, redirectUnauthorizedTo} from '@angular/fire/auth-guard';
 
-const redirectUnauthorizedTologin = () => redirectUnauthorizedTo(['login']);
+const redirectUnauthorizedTologin = () => redirectUnauthorizedTo(['splash']);
 
 const routes: Routes = [
   {

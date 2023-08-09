@@ -16,7 +16,6 @@ export class AuthService {
   public currentUser: BehaviorSubject<null | User> = new BehaviorSubject<User | null>(undefined);
   public accountuser: string | undefined;
   #authUnsubscribe: Unsubscribe;
-  youLoggedOut: false;
 
   #verificationId: string;
   constructor(public auth: Auth, public router: Router) {
@@ -62,10 +61,10 @@ export class AuthService {
       await signOut(this.auth);
     }
   }
-  private async setCurrentUser(user: User): Promise<void> {
+  private async setCurrentUser(user: User | null): Promise<void> {
     this.currentUser.next(user);
     if(!this.currentUser) {
-      await this.router.navigate(['/login']);
+      this.router.navigate(['/login']);
     } else {
       await this.router.navigate(['/home']);
     }

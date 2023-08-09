@@ -10,7 +10,14 @@ import { AuthService } from '../services/auth.service';
 export class SplashPage implements OnInit {
 
   constructor(public router: Router, public  authService: AuthService) {
-
+    setTimeout(() => {
+      if(this.authService.isLoggedIn()){
+        this.router.navigate(['/home']);
+      }
+      else {
+        this.router.navigate(['/login']);
+      }
+    }, 2000);
   }
 
   ngOnInit() {

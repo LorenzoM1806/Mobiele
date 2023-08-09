@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {AuthService} from '../services/auth.service';
 import {ModalController} from '@ionic/angular';
+import { SplashPage } from '../splash/splash.page';
 
 @Component({
   selector: 'app-home',
